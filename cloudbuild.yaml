@@ -1,0 +1,33 @@
+substitutions:
+  _HUGO_VERSION: '0.53'
+  _HUGO_HASH: '59ef2fbc1ce84137f1aa4d0f04b00cbf96077f1e'
+
+images:
+  - 'gcr.io/$PROJECT_ID/$REPO_NAME:commit-$SHORT_SHA'
+  - 'gcr.io/$PROJECT_ID/$REPO_NAME:$_HUGO_VERSION'
+  - 'gcr.io/$PROJECT_ID/$REPO_NAME:latest'
+
+steps:
+  - id: Build
+    name: 'gcr.io/cloud-builders/docker'
+    args:
+      - build
+      - --build-arg
+      - HUGO_VERSION=$_HUGO_VERSION
+      - --build-arg
+      - HUGO_HASH=$_HUGO_HASH
+      - -t
+      - gcr.io/$PROJECT_ID/$REPO_NAME:commit-$SHORT_SHA
+      - .
+
+  - id: Tag Version
+    name: 'gcr.io/cloud-builders/docker'
+    args: ['tag', 'gcr.io/$PROJECT_ID/$REPO_NAME:commit-$SHORT_SHA', 'gcr.io/$PROJECT_ID/$REPO_NAME:$_HUGO_VERSION']
+
+  - id: Tag Latest
+    name: 'gcr.io/cloud-builders/docker'
+    args: ['tag', 'gcr.io/$PROJECT_ID/$REPO_NAME:commit-$SHORT_SHA', 'gcr.io/$PROJECT_ID/$REPO_NAME:latest']
+
+  - id: Push
+    name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/$REPO_NAME']
