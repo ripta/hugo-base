@@ -16,8 +16,8 @@ RUN mkdir /tmp/hugo \
       && tar -zxf hugo.tar.gz \
       && sha1sum hugo \
       && echo "$HUGO_HASH  hugo" | sha1sum -c \
-      && mv hugo /hugo \
-      && chmod +x /hugo \
+      && mv hugo /usr/bin/hugo \
+      && chmod +x /usr/bin/hugo \
       && rm -rf /tmp/hugo
 
 RUN mkdir /build
