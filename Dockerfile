@@ -12,7 +12,7 @@ ENV HUGO_VERSION=$HUGO_VERSION
 ENV HUGO_HASH=$HUGO_HASH
 RUN mkdir /tmp/hugo \
       && cd /tmp/hugo \
-      && curl -L -o hugo.tar.gz https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz \
+      && curl -L -o hugo.tar.gz https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz \
       && tar -zxf hugo.tar.gz \
       && sha1sum hugo \
       && echo "$HUGO_HASH  hugo" | sha1sum -c \
