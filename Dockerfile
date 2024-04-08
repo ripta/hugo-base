@@ -1,4 +1,4 @@
-FROM debian:stretch-slim AS build
+FROM debian:bookworm-slim AS build
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
