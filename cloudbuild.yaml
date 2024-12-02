@@ -1,6 +1,6 @@
 substitutions:
-  _HUGO_VERSION: '0.124.1'
-  _HUGO_HASH: '97364e515eedcba649914f506aba91ddd0d25237'
+  _HUGO_VERSION: '0.139.3'
+  _HUGO_HASH: 'c7aad0301aa6d27b63c2bcd369f63fc1f68ea80f'
 
 images:
   - 'gcr.io/$PROJECT_ID/$REPO_NAME:commit-$SHORT_SHA'
