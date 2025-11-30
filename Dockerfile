@@ -1,4 +1,4 @@
-FROM debian:bookworm-slim AS build
+FROM debian:trixie-slim AS build
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
